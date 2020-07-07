@@ -1009,8 +1009,7 @@ namespace MiniblinkNet
             }
         }
 
-        private void OnWkeOnPaintBitUpdated(IntPtr webView, IntPtr param, IntPtr buf, IntPtr rectPtr,
-            int width, int height)
+        private void OnWkeOnPaintBitUpdated(IntPtr webView, IntPtr param, IntPtr buf, IntPtr rectPtr, int width, int height)
         {
             if (buf == IntPtr.Zero || _lockPaint) return;
             _lockPaint = true;

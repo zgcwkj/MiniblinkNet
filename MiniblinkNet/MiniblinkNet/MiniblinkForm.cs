@@ -159,8 +159,6 @@ namespace MiniblinkNet
         /// </summary>
         private void MiniblinkForm_Load(object sender, EventArgs e)
         {
-            Paint += DrawBorder;
-
             Shown += (ls, le) =>
             {
                 SetFormStartPos();
@@ -199,14 +197,6 @@ namespace MiniblinkNet
                 WinApi.SetWindowLong(Handle, (int)WinConst.GWL_EXSTYLE, style | (int)WinConst.WS_EX_LAYERED);
             }
             MBApi.wkeSetTransparent(View.MiniblinkHandle, true);
-        }
-
-        /// <summary>
-        /// 绘制边框
-        /// </summary>
-        private void DrawBorder(object sender, PaintEventArgs e)
-        {
-            e.Graphics.DrawRectangle(new Pen(Border.Color, Border.Size), Border.Size / 2, Border.Size / 2, this.Width - Border.Size, this.Height - Border.Size);
         }
 
         /// <summary>

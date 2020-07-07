@@ -35,7 +35,7 @@ if (window[maxName]) {
     var maxFunc = window[maxName];
     var els = document.getElementsByClassName("mbform-max");
     for (var i = 0; i < els.length; i++) {
-        els[i].addEventListener("click", function() { maxFunc(); });
+        els[i].addEventListener("click", function () { maxFunc(); });
     }
 }
 // 最小化元素
@@ -52,5 +52,34 @@ if (window[closeName]) {
     var els = document.getElementsByClassName("mbform-close");
     for (var i = 0; i < els.length; i++) {
         els[i].addEventListener("click", function () { closeFunc(); });
+    }
+}
+//网络请求
+window.ajax = {
+    get: function (url, fn) {
+        // XMLHttpRequest 对象用于在后台与服务器交换数据  
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.onreadystatechange = function () {
+            // readyState == 4说明请求已完成
+            if (xhr.readyState == 4 && xhr.status == 200 || xhr.status == 304) {
+                // 从服务器获得数据 
+                fn.call(this, xhr.responseText);
+            }
+        };
+        xhr.send();
+    },
+    post: function (url, data, fn) {
+        // XMLHttpRequest 对象用于在后台与服务器交换数据  
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url, true);
+        // 添加http头，发送信息至服务器时内容编码类型
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 304)) {
+                fn.call(this, xhr.responseText);
+            }
+        };
+        xhr.send(data);
     }
 }
