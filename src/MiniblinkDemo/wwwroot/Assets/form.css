@@ -1,0 +1,225 @@
+html, body {
+    cursor: default;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Microsoft Yahei Light","Microsoft YaHei UI","Microsoft Yahei","Segoe UI Light","Segoe UI","萍方","Helvetica Neue", Helvetica,Tahoma, Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    padding-left: 40px;
+}
+
+/*滚动条美化*/
+::-webkit-scrollbar-track-piece {
+    background-color: #FFF;
+    -webkit-border-radius: 0;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    height: 50px;
+    background-color: #999;
+    -webkit-border-radius: 4px;
+    outline: 2px solid #fff;
+    outline-offset: -2px;
+    border: 2px solid #fff;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        height: 50px;
+        background-color: #9f9f9f;
+        -webkit-border-radius: 4px;
+    }
+/*滚动条美化-END*/
+
+/*右上角功能*/
+.ui-sys-bar {
+    -webkit-app-region: drag; /*实现拖动该元素来移动窗体功能*/
+    position: fixed;
+    width: calc(100% - 40px);
+    height: 30px;
+    left: 40px;
+    z-index: 2;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+    .ui-sys-bar:hover .ui-sys-commands span {
+        color: #fff;
+        opacity: 1;
+    }
+
+    .ui-sys-bar .ui-sys-commands {
+        -webkit-app-region: no-drag; /*取消拖动该元素来移动窗体功能*/
+        word-break: keep-all;
+        white-space: nowrap;
+        transition: all ease-in-out 0.3s;
+    }
+
+    .ui-sys-bar:hover .ui-sys-commands {
+        background-color: rgba(183, 85, 142,1);
+    }
+
+    .ui-sys-bar .ui-sys-commands span {
+        height: 30px;
+        padding: 0 10px;
+        line-height: 30px;
+        text-align: center;
+        vertical-align: middle;
+        font-family: Webdings !important;
+        color: #333;
+        display: inline-block;
+        opacity: 0.5;
+        transition: all ease-in-out 0.3s;
+    }
+
+        .ui-sys-bar .ui-sys-commands span:hover {
+            opacity: 1;
+            background-color: rgba(33,33,33,.1);
+        }
+
+        .ui-sys-bar .ui-sys-commands span:active {
+            opacity: 1;
+            background-color: rgba(33,33,33,.3);
+        }
+
+        .ui-sys-bar .ui-sys-commands span:last-child:hover {
+            opacity: 1;
+            background-color: rgba(204,0,0,1);
+            color: #fff;
+        }
+
+        .ui-sys-bar .ui-sys-commands span:last-child:active {
+            opacity: 1;
+            background-color: rgba(204,0,0,.5);
+            color: #fff;
+        }
+/*右上角功能-END*/
+
+/*左侧功能*/
+.ui-nav {
+    -webkit-app-region: drag; /*实现拖动该元素来移动窗体功能*/
+    width: 40px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #B7558E;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#B7558E), to(#C26F9F));
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all ease-in-out 0.3s;
+}
+
+.ui-nav-color {
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#c4c4c4), to(#d1d1d1));
+}
+
+.aside-expanded .ui-nav {
+    width: 220px;
+}
+
+.ui-nav .ui-nav-commands {
+    -webkit-app-region: no-drag; /*取消拖动该元素来移动窗体功能*/
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+    .ui-nav .ui-nav-commands > span {
+        height: 40px;
+        display: block;
+        line-height: 40px;
+        color: #fff;
+        white-space: nowrap;
+        width: 100%;
+        transition: all ease-in-out 0.2s;
+    }
+
+.aside-expanded .ui-nav .ui-nav-commands > span.ui-nav-hamburg-btn {
+    color: #fff;
+}
+
+.ui-nav .ui-nav-commands > span.ui-nav-hamburg-btn {
+    height: 40px;
+    width: 40px;
+    color: rgba(255,255,255,.3);
+}
+
+    .ui-nav .ui-nav-commands > span.ui-nav-hamburg-btn:hover {
+        background-color: transparent;
+        color: rgba(255,255,255,1);
+    }
+
+    .ui-nav .ui-nav-commands > span.ui-nav-hamburg-btn:active {
+        background-color: transparent;
+        color: rgba(255,255,255,.6);
+    }
+
+.ui-nav .ui-nav-commands > span:hover {
+    background-color: rgba(255,255,255,.3);
+}
+
+.ui-nav .ui-nav-commands > span:active {
+    background-color: rgba(255,255,255,.2);
+}
+
+.ui-nav .ui-nav-commands > span > i {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    line-height: 40px;
+    text-align: center;
+}
+/*左侧功能-END*/
+
+/*中间功能*/
+.ui-main-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+    .ui-main-container .ui-pane {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        opacity: 0;
+        background-color: #fff;
+        overflow: hidden;
+    }
+
+        .ui-main-container .ui-pane.scrollable {
+            overflow: auto;
+        }
+
+        .ui-main-container .ui-pane.active {
+            animation: pane-fade-in ease-out 0.3s forwards;
+        }
+
+@keyframes pane-fade-in {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+        z-index: 0;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+        z-index: 1;
+    }
+}
+/*中间功能-END*/

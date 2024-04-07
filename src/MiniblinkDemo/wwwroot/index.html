@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Miniblink</title>
+    <link href="Assets/form.css" rel="stylesheet" />
+    <link href="Assets/font-ico/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="Assets/jquery.min.js"></script>
+    <script src="Assets/form.js"></script>
+</head>
+<body style="-webkit-user-select: none;">
+    <nav class="ui-sys-bar">
+        <div class="ui-sys-commands">
+            <span class="mbform-min">&#48;</span>
+            <span class="mbform-max">&#49;</span>
+            <span class="mbform-close">&#114;</span>
+        </div>
+    </nav>
+    <aside class="ui-nav">
+        <div class="ui-nav-commands">
+            <span class="ui-nav-hamburg-btn">
+                <i class="fa fa-bars"></i>
+            </span>
+            <span data-tag="main">
+                <i class="fa fa-home"></i>
+                <span>首页</span>
+            </span>
+        </div>
+        <div class="ui-nav-commands">
+            <span data-tag="areas">
+                <i class="fa fa-chrome"></i>
+                <span>关于</span>
+            </span>
+        </div>
+    </aside>
+    <div class="ui-main-container">
+        <div class="ui-pane scrollable active" data-tag="home">
+            <div class="container-fluid">
+                <h2>Miniblink</h2>
+                <p>这是 Miniblink 例子，主要总结一些常见的功能</p>
+                <hr />
+                <p>
+                    <span>介绍:</span>
+                    <pre>不会描述<br />用心做Demo，用脚做说明！</pre>
+                </p>
+            </div>
+        </div>
+        <div class="ui-pane scrollable" data-tag="main"></div>
+        <div class="ui-pane scrollable" data-tag="areas"></div>
+    </div>
+    <script>
+        //左侧操作功能
+        $(".ui-nav-commands > span").click(function (e) {
+            if ($(this).html() != $('.ui-nav-hamburg-btn').html()) {
+                var tag = $(this).data('tag');
+                $(".ui-main-container > .ui-pane").removeClass("active");
+                $.ajax({
+                    url: 'Txt/' + tag + '.html',
+                    dataType: 'text',
+                    success: function (data) {
+                        $(".ui-main-container > .ui-pane[data-tag='" + tag + "']").html(data);
+                    }
+                });
+                $(".ui-main-container > .ui-pane[data-tag='" + tag + "']").addClass("active");
+            } else {
+                $(document.body).toggleClass('aside-expanded');
+                if ($(document.body).hasClass('aside-expanded')) {
+                    e.stopPropagation();//停止传播
+                    $(document.body).one('click', function () {
+                        $(document.body).removeClass('aside-expanded');
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B20B797D-67FA-4A46-945E-59390D6C0A36}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MiniblinkNet</RootNamespace>
+    <AssemblyName>MiniblinkNet</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNetZip, Version=1.13.4.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\DotNetZip.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <ContentWithTargetPath Include="Libs\*.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>%(Filename)%(Extension)</TargetPath>
+    </ContentWithTargetPath>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Files\wke.h" />
+    <EmbeddedResource Include="Files\browser.js" />
+    <EmbeddedResource Include="Files\form.js" />
+    <EmbeddedResource Include="Files\front_end.zip" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DeviceParameter.cs" />
+    <Compile Include="Downloader.cs" />
+    <Compile Include="DrawToBitmapUtil.cs" />
+    <Compile Include="Exts.cs" />
+    <Compile Include="ExtTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExtTextBox.Designer.cs">
+      <DependentUpon>ExtTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBorder.cs" />
+    <Compile Include="FormResizeWidth.cs" />
+    <Compile Include="FormShadowWidth.cs" />
+    <Compile Include="FrameContext.cs" />
+    <Compile Include="FrmAlert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAlert.Designer.cs">
+      <DependentUpon>FrmAlert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConfirm.Designer.cs">
+      <DependentUpon>FrmConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrompt.Designer.cs">
+      <DependentUpon>FrmPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ILoadResource.cs" />
+    <Compile Include="IResourceCache.cs" />
+    <Compile Include="JsFunc.cs" />
+    <Compile Include="LocalHttp\ApiNameAttribute.cs" />
+    <Compile Include="LocalHttp\NetApi.cs" />
+    <Compile Include="LocalHttp\NetApiAfter.cs" />
+    <Compile Include="LocalHttp\NetApiBefore.cs" />
+    <Compile Include="LocalHttp\NetApiEngine.cs" />
+    <Compile Include="LocalHttp\NetApiError.cs" />
+    <Compile Include="LocalHttp\NetApiRequest.cs" />
+    <Compile Include="LocalHttp\RouteAttribute.cs" />
+    <Compile Include="LocalHttp\RouteSetting.cs" />
+    <Compile Include="MiniblinkBrowser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MiniblinkBrowser.Designer.cs">
+      <DependentUpon>MiniblinkBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MiniblinkBrowserEvents.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MiniblinkBrowserMethod.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MiniblinkBrowserProperty.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MiniblinkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiniblinkForm.Designer.cs">
+      <DependentUpon>MiniblinkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MiniblinkSetting.cs" />
+    <Compile Include="MiniBlink\Interface\IMiniblink.cs" />
+    <Compile Include="MiniBlink\MBApi.cs" />
+    <Compile Include="MiniBlink\MBCookieCollection.cs" />
+    <Compile Include="MiniBlink\MBDelegates.cs" />
+    <Compile Include="MiniBlink\MBEnums.cs" />
+    <Compile Include="MiniBlink\MBEvents.cs" />
+    <Compile Include="MiniBlink\MBModels.cs" />
+    <Compile Include="MiniBlink\MBPostBody.cs" />
+    <Compile Include="NavigateType.cs" />
+    <Compile Include="NetFunc.cs" />
+    <Compile Include="PrintUtil.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceCache\FileCache.cs" />
+    <Compile Include="ResourceLoader\EmbedLoader.cs" />
+    <Compile Include="ResourceLoader\FileLoader.cs" />
+    <Compile Include="ResourceLoader\ZipLoader.cs" />
+    <Compile Include="ScreenshotImage.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="WinApi.cs" />
+    <Compile Include="WinConst.cs" />
+    <Compile Include="WinDelegates.cs" />
+    <Compile Include="WinModels.cs" />
+    <Compile Include="WKEException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExtTextBox.resx">
+      <DependentUpon>ExtTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAlert.resx">
+      <DependentUpon>FrmAlert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConfirm.resx">
+      <DependentUpon>FrmConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrompt.resx">
+      <DependentUpon>FrmPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MiniblinkBrowser.resx">
+      <DependentUpon>MiniblinkBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MiniblinkForm.resx">
+      <DependentUpon>MiniblinkForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
