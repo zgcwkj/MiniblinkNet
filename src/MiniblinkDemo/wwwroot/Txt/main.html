@@ -1,7 +1,9 @@
 <div style="margin:10px;">
-    <button onclick="showBox()">温馨提示</button>
-    <button onclick="showWindow()">再打开一次</button>
-    <button onclick="showDialog()">再打开一次并置顶</button>
+    <button onclick="alertBox()">提示</button>
+    <button onclick="confirmBox()">反馈提示</button>
+    <button onclick="promptBox()">输入框</button>
+    <button onclick="ShowWindow()">再打开一次</button>
+    <button onclick="ShowDialogWindow()">再打开一次并置顶</button>
     <button onclick="ShowDevTools()">开发者工具</button>
     <br />
     <button onclick="CStoJS1()">C#执行JS代码(不含返回值)</button>
@@ -14,6 +16,20 @@
     <button onclick="var data = JStoCS4(['我是小可爱', 'Love']); alert(data[0] + '\n' + data[1] + '\n' + data[2] + '\n' + data[3])">JS执行C#代码(传多个参数含返回)</button>
 </div>
 <script>
+    //提示
+    function alertBox() {
+        alert("提示内容", { title: "标题" });
+    }
+    //反馈提示
+    function confirmBox() {
+        var data = confirm("反馈提示内容", { title: "标题" });
+        console.log(data);
+    }
+    //输入框
+    function promptBox() {
+        var data = prompt("输入提示", "临时内容", { title: "标题" });
+        console.log(data);
+    }
     //JS不含返回值
     function UTitle(data) {
         $("#Title").html(data);
