@@ -13,12 +13,14 @@ namespace MiniblinkDemo
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.MinimumSize = new System.Drawing.Size(200, 50);
             this.Text = "Main";
-            this.NoneBorderResize = true;
             //
-            MiniblinkSetting.EnableHighDPISupport();
+            this.NoneBorderResize = true;
+            ShadowWidth.SetAll(1);
             Border.Set(this, 1, "#B7558E", "#CBCBCB");
             View.ResourceLoader.Add(new EmbedLoader(typeof(Main).Assembly, "wwwroot", "loc.res"));
             View.LoadUri("http://loc.res/index.html");
+            //启动高DPI
+            MiniblinkSetting.EnableHighDPISupport();
         }
 
         [JsFunc]

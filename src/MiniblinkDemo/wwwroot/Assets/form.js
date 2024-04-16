@@ -1,14 +1,12 @@
 //窗口状态改变
-window.maxsizechanged = function (state) {
+window.statechanged = function (state) {
     var el = $('.ui-sys-commands > span:eq(1)');
     if (state == 2) {
-        el.text('\u0031');
-    }
-    else {
         el.text('\u0032');
     }
-};
-window.minsizechanged = function (state) {
+    else {
+        el.text('\u0031');
+    }
 };
 //窗口激活状态改变
 window.activated = function () {

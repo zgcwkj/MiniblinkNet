@@ -106,7 +106,6 @@ body {
 
 /*左侧功能*/
 .ui-nav {
-    -webkit-app-region: drag; /*实现拖动该元素来移动窗体功能*/
     width: 40px;
     height: 100%;
     position: fixed;
@@ -130,7 +129,6 @@ body {
 }
 
 .ui-nav .ui-nav-commands {
-    -webkit-app-region: no-drag; /*取消拖动该元素来移动窗体功能*/
     overflow: hidden;
     width: 100%;
     position: relative;
